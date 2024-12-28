@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,18 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChiTietDonThuoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChiTietDonThuoc.Designer.cs">
-      <DependentUpon>ChiTietDonThuoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DonThuoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DonThuoc.Designer.cs">
-      <DependentUpon>DonThuoc.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmBacSi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +110,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EntityFramework">
+      <Version>6.2.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{7ca93121-081f-4bbc-ab23-3a29bd132c5b}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{f89e1352-bed1-49cc-8b45-2462f8608fd2}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
