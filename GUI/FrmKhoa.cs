@@ -71,5 +71,12 @@ namespace GUI
             khoaBUS.SuaKhoa(khoa);
             Fill(khoaBUS.LayDanhSachKhoa());
         }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            int maKhoa = Convert.ToInt32(txtMa.Text);
+            khoaBUS.XoaKhoa(maKhoa);
+            Fill(khoaBUS.LayDanhSachKhoa());
+        }
     }
 }

@@ -46,8 +46,8 @@
     <Compile Include="DAL\BenhNhanDAL.cs" />
     <Compile Include="DAL\ChiTietDonThuocDAL.cs" />
     <Compile Include="DAL\DonThuocDAL.cs" />
-    <Compile Include="DAL\KhamBenhDAL.cs" />
     <Compile Include="DAL\KhoaDAL.cs" />
+    <Compile Include="DAL\LichSuKhamDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

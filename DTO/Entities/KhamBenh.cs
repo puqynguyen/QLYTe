@@ -26,10 +26,10 @@ namespace DTO.Entities
         public DateTime NgayKham { get; set; }
 
         [StringLength(200)]
-        public string ChanDoan { get; set; }
+        public string TrieuChung { get; set; }
 
         [StringLength(200)]
-        public string Thuoc { get; set; }
+        public string ChanDoan { get; set; }
 
         [StringLength(200)]
         public string GhiChu { get; set; }

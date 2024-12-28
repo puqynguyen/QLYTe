@@ -28,5 +28,17 @@ namespace GUI
             FrmKhoa frm = new FrmKhoa();
             frm.ShowDialog();
         }
+
+        private void btnBenhNhan_Click(object sender, EventArgs e)
+        {
+            FrmBenhNhan frmBenhNhan = new FrmBenhNhan();
+            frmBenhNhan.ShowDialog();
+        }
+
+        private void btnLichSuKham_Click(object sender, EventArgs e)
+        {
+            FrmLichSuKham frm = new FrmLichSuKham();
+            frm.ShowDialog();
+        }
     }
 }

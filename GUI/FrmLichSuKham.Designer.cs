@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLichSuKham));
-            this.dgvLichSuKham = new System.Windows.Forms.DataGridView();
+            this.dgv = new System.Windows.Forms.DataGridView();
             this.MaLichSu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaBenhNhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaBacSi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,28 +54,30 @@
             this.txtChuanDoan = new System.Windows.Forms.Label();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuKham)).BeginInit();
+            this.label2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvLichSuKham
+            // dgv
             // 
-            this.dgvLichSuKham.AllowUserToAddRows = false;
-            this.dgvLichSuKham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvLichSuKham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLichSuKham.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaLichSu,
             this.MaBenhNhan,
             this.MaBacSi,
             this.NgayKham});
-            this.dgvLichSuKham.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvLichSuKham.Location = new System.Drawing.Point(0, 0);
-            this.dgvLichSuKham.Name = "dgvLichSuKham";
-            this.dgvLichSuKham.ReadOnly = true;
-            this.dgvLichSuKham.RowHeadersWidth = 51;
-            this.dgvLichSuKham.RowTemplate.Height = 24;
-            this.dgvLichSuKham.Size = new System.Drawing.Size(982, 239);
-            this.dgvLichSuKham.TabIndex = 1;
+            this.dgv.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgv.Location = new System.Drawing.Point(0, 0);
+            this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
+            this.dgv.RowHeadersWidth = 51;
+            this.dgv.RowTemplate.Height = 24;
+            this.dgv.Size = new System.Drawing.Size(982, 239);
+            this.dgv.TabIndex = 1;
+            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // MaLichSu
             // 
@@ -273,26 +275,38 @@
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Location = new System.Drawing.Point(846, 245);
+            this.txtTimKiem.Location = new System.Drawing.Point(820, 245);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(124, 22);
+            this.txtTimKiem.Size = new System.Drawing.Size(152, 22);
             this.txtTimKiem.TabIndex = 21;
+            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(815, 245);
+            this.pictureBox1.Location = new System.Drawing.Point(789, 245);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 28);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label2.Location = new System.Drawing.Point(786, 276);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(186, 16);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "*Nhập mã hoặc tên bệnh nhân";
+            // 
             // FrmLichSuKham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 453);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.txtTrieuChung);
@@ -313,10 +327,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MaKhamBenh);
-            this.Controls.Add(this.dgvLichSuKham);
+            this.Controls.Add(this.dgv);
             this.Name = "FrmLichSuKham";
             this.Text = "Lịch Sử Khám";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLichSuKham)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -325,7 +339,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvLichSuKham;
+        private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaLichSu;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaBenhNhan;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaBacSi;
@@ -350,5 +364,6 @@
         private System.Windows.Forms.Label txtChuanDoan;
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label2;
     }
 }

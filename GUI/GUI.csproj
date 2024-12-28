@@ -89,8 +89,14 @@
     <EmbeddedResource Include="FrmBacSi.resx">
       <DependentUpon>FrmBacSi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmBenhNhan.resx">
+      <DependentUpon>FrmBenhNhan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmKhoa.resx">
       <DependentUpon>FrmKhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLichSuKham.resx">
+      <DependentUpon>FrmLichSuKham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>

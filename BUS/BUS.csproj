@@ -45,8 +45,8 @@
     <Compile Include="BUS\BenhNhanBUS.cs" />
     <Compile Include="BUS\ChiTietDonThuocBUS.cs" />
     <Compile Include="BUS\DonThuocBUS.cs" />
-    <Compile Include="BUS\KhamBenhBUS.cs" />
     <Compile Include="BUS\KhoaBUS.cs" />
+    <Compile Include="BUS\LichSuKhamBUS.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

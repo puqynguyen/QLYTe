@@ -22,7 +22,7 @@ namespace GUI
 
         private void FrmBacSi_Load(object sender, EventArgs e)
         {
-            Clear();
+            ClearAllTextBoxes();
             Fill(bacSiBUS.LayDanhSachBacSi());
             FillCbb();
         }
@@ -48,20 +48,31 @@ namespace GUI
             cbb.DisplayMember = "TenKhoa";
             cbb.ValueMember = "MaKhoa";
         }
-        private void Clear()
+        private void ClearAllTextBoxes()
         {
-            txtMaBacSi.Text = "";
-            txtEmail.Text = "";
-            txtHoTen.Text = "";
-            txtSoDienThoai.Text = "";
-            cbb.Text = "";
+            DuyetTatCaTextBox(this);
+        }
+
+        private void DuyetTatCaTextBox(Control parentControl)
+        {
+            foreach (Control control in parentControl.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.Text = string.Empty;
+                }
+                if (control.HasChildren)
+                {
+                    DuyetTatCaTextBox(control);
+                }
+            }
         }
 
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && dgv.Columns[0].Index >= 0)
             {
-                Clear();
+                ClearAllTextBoxes();
                 int maBS = Convert.ToInt32(dgv.Rows[e.RowIndex].Cells[0].Value);
                 BacSi bacsi = bacSiBUS.TimKiemBacSi(maBS);
                 txtMaBacSi.Text = bacsi.MaBacSi.ToString();

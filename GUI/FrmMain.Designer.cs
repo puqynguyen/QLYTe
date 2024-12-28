@@ -40,6 +40,7 @@
             this.btnBenhNhan.TabIndex = 2;
             this.btnBenhNhan.Text = "Quản Lý Bệnh Nhân";
             this.btnBenhNhan.UseVisualStyleBackColor = true;
+            this.btnBenhNhan.Click += new System.EventHandler(this.btnBenhNhan_Click);
             // 
             // btnBacSi
             // 
@@ -79,6 +80,7 @@
             this.btnLichSuKham.TabIndex = 5;
             this.btnLichSuKham.Text = "Lịch Sử Khám";
             this.btnLichSuKham.UseVisualStyleBackColor = true;
+            this.btnLichSuKham.Click += new System.EventHandler(this.btnLichSuKham_Click);
             // 
             // FrmMain
             // 

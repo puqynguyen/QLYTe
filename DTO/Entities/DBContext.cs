@@ -8,7 +8,7 @@ namespace DTO.Entities
     public partial class DBContext : DbContext
     {
         public DBContext()
-            : base("name=DBContext")
+            : base("name=DbContext")
         {
         }
 
