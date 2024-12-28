@@ -43,5 +43,10 @@ namespace BUS.BUS
         {
             return benhNhanDAL.LayDanhSach();
         }
+        public BenhNhan TimKiemBenhNhan(int maBenhNhan)
+        {
+            return benhNhanDAL.TimKiem(maBenhNhan);
+        }
+
     }
 }

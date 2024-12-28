@@ -18,5 +18,9 @@ namespace BUS.BUS
         {
             return khamBenhDAL.Them(khamBenh);
         }
+        public KhamBenh TimKiemKhamBenh(int maKhamBenh)
+        {
+            return khamBenhDAL.TimKiem(maKhamBenh);
+        }
     }
 }

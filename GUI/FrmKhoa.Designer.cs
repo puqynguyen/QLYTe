@@ -32,12 +32,12 @@
             this.MaKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtMa = new System.Windows.Forms.TextBox();
+            this.txtTen = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtMoTa = new System.Windows.Forms.TextBox();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -61,6 +61,7 @@
             this.dgv.RowTemplate.Height = 24;
             this.dgv.Size = new System.Drawing.Size(982, 150);
             this.dgv.TabIndex = 0;
+            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // MaKhoa
             // 
@@ -86,20 +87,20 @@
             this.MoTa.Name = "MoTa";
             this.MoTa.ReadOnly = true;
             // 
-            // textBox1
+            // txtMa
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(117, 165);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 1;
+            this.txtMa.Enabled = false;
+            this.txtMa.Location = new System.Drawing.Point(117, 165);
+            this.txtMa.Name = "txtMa";
+            this.txtMa.Size = new System.Drawing.Size(100, 22);
+            this.txtMa.TabIndex = 1;
             // 
-            // textBox3
+            // txtTen
             // 
-            this.textBox3.Location = new System.Drawing.Point(117, 193);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(243, 22);
-            this.textBox3.TabIndex = 3;
+            this.txtTen.Location = new System.Drawing.Point(117, 193);
+            this.txtTen.Name = "txtTen";
+            this.txtTen.Size = new System.Drawing.Size(243, 22);
+            this.txtTen.TabIndex = 3;
             // 
             // label1
             // 
@@ -128,12 +129,12 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Tên Khoa";
             // 
-            // textBox2
+            // txtMoTa
             // 
-            this.textBox2.Location = new System.Drawing.Point(117, 224);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(243, 22);
-            this.textBox2.TabIndex = 7;
+            this.txtMoTa.Location = new System.Drawing.Point(117, 224);
+            this.txtMoTa.Name = "txtMoTa";
+            this.txtMoTa.Size = new System.Drawing.Size(243, 22);
+            this.txtMoTa.TabIndex = 7;
             // 
             // btnXoa
             // 
@@ -152,6 +153,7 @@
             this.btnSua.TabIndex = 11;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -161,6 +163,7 @@
             this.btnThem.TabIndex = 10;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // FrmKhoa
             // 
@@ -170,15 +173,16 @@
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtMoTa);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTen);
+            this.Controls.Add(this.txtMa);
             this.Controls.Add(this.dgv);
             this.Name = "FrmKhoa";
             this.Text = "Khoa";
+            this.Load += new System.EventHandler(this.FrmKhoa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -191,12 +195,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKhoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenKhoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn MoTa;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtMa;
+        private System.Windows.Forms.TextBox txtTen;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtMoTa;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;

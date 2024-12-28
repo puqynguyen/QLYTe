@@ -33,9 +33,9 @@ namespace BUS.BUS
         }
 
         // Tìm kiếm đơn thuốc
-        public List<DonThuoc> TimKiemDonThuoc(string keyword)
+        public DonThuoc TimKiemDonThuoc(int maDonThuoc)
         {
-            return donThuocDAL.TimKiem(keyword);
+            return donThuocDAL.TimKiem(maDonThuoc);
         }
 
         // Lấy danh sách đơn thuốc

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DAL.DAL;
 using DTO.Entities;
+using System.Collections.Generic;
 
 namespace BUS.BUS
 {
@@ -35,9 +32,9 @@ namespace BUS.BUS
         }
 
         // Tìm kiếm bác sĩ
-        public List<BacSi> TimKiemBacSi(string keyword)
+        public BacSi TimKiemBacSi(int maBacSi)
         {
-            return bacSiDAL.TimKiem(keyword);
+            return bacSiDAL.TimKiem(maBacSi);
         }
 
         // Lấy danh sách bác sĩ

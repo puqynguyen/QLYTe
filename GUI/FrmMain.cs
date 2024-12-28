@@ -16,5 +16,17 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void btnBacSi_Click(object sender, EventArgs e)
+        {
+            FrmBacSi frmBacSi = new FrmBacSi();
+            frmBacSi.ShowDialog();
+        }
+
+        private void btnKhoa_Click(object sender, EventArgs e)
+        {
+            FrmKhoa frm = new FrmKhoa();
+            frm.ShowDialog();
+        }
     }
 }

@@ -24,48 +24,46 @@
 
         private void InitializeComponent()
         {
-            this.dgvBacSi = new System.Windows.Forms.DataGridView();
+            this.dgv = new System.Windows.Forms.DataGridView();
             this.MaBacSi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoDienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtHoTen = new System.Windows.Forms.TextBox();
-            this.txtMaKhoa = new System.Windows.Forms.TextBox();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblHoTen = new System.Windows.Forms.Label();
-            this.lblMaKhoa = new System.Windows.Forms.Label();
             this.lblSoDienThoai = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.btnTimKiem = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMaBacSi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBacSi)).BeginInit();
+            this.cbb = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvBacSi
+            // dgv
             // 
-            this.dgvBacSi.AllowUserToAddRows = false;
-            this.dgvBacSi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvBacSi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBacSi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaBacSi,
             this.HoTen,
             this.MaKhoa,
             this.SoDienThoai,
             this.Email});
-            this.dgvBacSi.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvBacSi.Location = new System.Drawing.Point(0, 0);
-            this.dgvBacSi.Name = "dgvBacSi";
-            this.dgvBacSi.RowHeadersWidth = 51;
-            this.dgvBacSi.Size = new System.Drawing.Size(982, 250);
-            this.dgvBacSi.TabIndex = 0;
+            this.dgv.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgv.Location = new System.Drawing.Point(0, 0);
+            this.dgv.Name = "dgv";
+            this.dgv.RowHeadersWidth = 51;
+            this.dgv.Size = new System.Drawing.Size(982, 250);
+            this.dgv.TabIndex = 0;
+            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // MaBacSi
             // 
@@ -105,23 +103,16 @@
             this.txtHoTen.Size = new System.Drawing.Size(200, 22);
             this.txtHoTen.TabIndex = 1;
             // 
-            // txtMaKhoa
-            // 
-            this.txtMaKhoa.Location = new System.Drawing.Point(205, 328);
-            this.txtMaKhoa.Name = "txtMaKhoa";
-            this.txtMaKhoa.Size = new System.Drawing.Size(200, 22);
-            this.txtMaKhoa.TabIndex = 2;
-            // 
             // txtSoDienThoai
             // 
-            this.txtSoDienThoai.Location = new System.Drawing.Point(205, 358);
+            this.txtSoDienThoai.Location = new System.Drawing.Point(205, 329);
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(200, 22);
             this.txtSoDienThoai.TabIndex = 3;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(205, 388);
+            this.txtEmail.Location = new System.Drawing.Point(205, 359);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(200, 22);
             this.txtEmail.TabIndex = 4;
@@ -135,19 +126,10 @@
             this.lblHoTen.TabIndex = 6;
             this.lblHoTen.Text = "Họ và tên";
             // 
-            // lblMaKhoa
-            // 
-            this.lblMaKhoa.AutoSize = true;
-            this.lblMaKhoa.Location = new System.Drawing.Point(125, 331);
-            this.lblMaKhoa.Name = "lblMaKhoa";
-            this.lblMaKhoa.Size = new System.Drawing.Size(59, 16);
-            this.lblMaKhoa.TabIndex = 7;
-            this.lblMaKhoa.Text = "Mã khoa";
-            // 
             // lblSoDienThoai
             // 
             this.lblSoDienThoai.AutoSize = true;
-            this.lblSoDienThoai.Location = new System.Drawing.Point(125, 361);
+            this.lblSoDienThoai.Location = new System.Drawing.Point(125, 332);
             this.lblSoDienThoai.Name = "lblSoDienThoai";
             this.lblSoDienThoai.Size = new System.Drawing.Size(85, 16);
             this.lblSoDienThoai.TabIndex = 8;
@@ -156,7 +138,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(125, 391);
+            this.lblEmail.Location = new System.Drawing.Point(125, 362);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(41, 16);
             this.lblEmail.TabIndex = 9;
@@ -164,39 +146,33 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(425, 298);
+            this.btnThem.Location = new System.Drawing.Point(422, 301);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 10;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(425, 328);
+            this.btnSua.Location = new System.Drawing.Point(422, 331);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 11;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(425, 358);
+            this.btnXoa.Location = new System.Drawing.Point(422, 361);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 12;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Location = new System.Drawing.Point(425, 388);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(75, 23);
-            this.btnTimKiem.TabIndex = 13;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // label1
             // 
@@ -218,43 +194,41 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(125, 419);
+            this.label2.Location = new System.Drawing.Point(125, 390);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 16);
             this.label2.TabIndex = 17;
             this.label2.Text = "Khoa";
             // 
-            // comboBox1
+            // cbb
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(205, 416);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 24);
-            this.comboBox1.TabIndex = 18;
+            this.cbb.FormattingEnabled = true;
+            this.cbb.Location = new System.Drawing.Point(205, 387);
+            this.cbb.Name = "cbb";
+            this.cbb.Size = new System.Drawing.Size(200, 24);
+            this.cbb.TabIndex = 18;
             // 
             // FrmBacSi
             // 
             this.ClientSize = new System.Drawing.Size(982, 453);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbb);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtMaBacSi);
-            this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblSoDienThoai);
-            this.Controls.Add(this.lblMaKhoa);
             this.Controls.Add(this.lblHoTen);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtSoDienThoai);
-            this.Controls.Add(this.txtMaKhoa);
             this.Controls.Add(this.txtHoTen);
-            this.Controls.Add(this.dgvBacSi);
+            this.Controls.Add(this.dgv);
             this.Name = "FrmBacSi";
             this.Text = "Quản Lý Bác Sĩ";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBacSi)).EndInit();
+            this.Load += new System.EventHandler(this.FrmBacSi_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,27 +236,24 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvBacSi;
+        private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaBacSi;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKhoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoDienThoai;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.TextBox txtHoTen;
-        private System.Windows.Forms.TextBox txtMaKhoa;
         private System.Windows.Forms.TextBox txtSoDienThoai;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblHoTen;
-        private System.Windows.Forms.Label lblMaKhoa;
         private System.Windows.Forms.Label lblSoDienThoai;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
-        private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtMaBacSi;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbb;
     }
 }

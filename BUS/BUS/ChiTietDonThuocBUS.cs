@@ -38,11 +38,3 @@ namespace BUS.BUS
         }
     }
 }
-
-// Lấy danh sách bệnh nhân
-public List<BenhNhan> LayDanhSachBenhNhan()
-        {
-            return benhNhanDAL.LayDanhSach();
-        }
-    }
-}

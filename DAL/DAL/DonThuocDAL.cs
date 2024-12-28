@@ -1,182 +1,114 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Linq;
 using DTO.Entities;
 
 namespace DAL.DAL
 {
     public class DonThuocDAL
     {
-        private string connectionString = "DBContextYT"; // Thay bằng chuỗi kết nối thực tế
+        private readonly DBContext _context;
+
+        public DonThuocDAL()
+        {
+            _context = new DBContext();
+        }
 
         // Thêm đơn thuốc
         public bool Them(DonThuoc donThuoc)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                string query = "INSERT INTO DonThuoc (MaDonThuoc, MaKhamBenh, NgayKeDon, GhiChu) " +
-                               "VALUES (@MaDonThuoc, @MaKhamBenh, @NgayKeDon, @GhiChu)";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@MaDonThuoc", donThuoc.MaDonThuoc);
-                    command.Parameters.AddWithValue("@MaKhamBenh", donThuoc.MaKhamBenh ?? (object)DBNull.Value);
-                    command.Parameters.AddWithValue("@NgayKeDon", donThuoc.NgayKeDon);
-                    command.Parameters.AddWithValue("@GhiChu", donThuoc.GhiChu ?? (object)DBNull.Value);
-
-                    try
-                    {
-                        connection.Open();
-                        int rowsAffected = command.ExecuteNonQuery();
-                        return rowsAffected > 0;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error: " + ex.Message);
-                        return false;
-                    }
-                }
+                _context.DonThuocs.Add(donThuoc); 
+                _context.SaveChanges();          
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return false;
             }
         }
 
         // Sửa đơn thuốc
         public bool Sua(DonThuoc donThuoc)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                string query = "UPDATE DonThuoc " +
-                               "SET MaKhamBenh = @MaKhamBenh, NgayKeDon = @NgayKeDon, GhiChu = @GhiChu " +
-                               "WHERE MaDonThuoc = @MaDonThuoc";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                // Tìm đối tượng DonThuoc cần sửa
+                var donThuocToUpdate = _context.DonThuocs.FirstOrDefault(d => d.MaDonThuoc == donThuoc.MaDonThuoc);
+                if (donThuocToUpdate != null)
                 {
-                    command.Parameters.AddWithValue("@MaDonThuoc", donThuoc.MaDonThuoc);
-                    command.Parameters.AddWithValue("@MaKhamBenh", donThuoc.MaKhamBenh ?? (object)DBNull.Value);
-                    command.Parameters.AddWithValue("@NgayKeDon", donThuoc.NgayKeDon);
-                    command.Parameters.AddWithValue("@GhiChu", donThuoc.GhiChu ?? (object)DBNull.Value);
+                    donThuocToUpdate.MaKhamBenh = donThuoc.MaKhamBenh;
+                    donThuocToUpdate.NgayKeDon = donThuoc.NgayKeDon;
+                    donThuocToUpdate.GhiChu = donThuoc.GhiChu;
 
-                    try
-                    {
-                        connection.Open();
-                        int rowsAffected = command.ExecuteNonQuery();
-                        return rowsAffected > 0;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error: " + ex.Message);
-                        return false;
-                    }
+                    _context.SaveChanges(); // Lưu thay đổi
+                    return true;
                 }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return false;
             }
         }
 
         // Xóa đơn thuốc
         public bool Xoa(int maDonThuoc)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                string query = "DELETE FROM DonThuoc WHERE MaDonThuoc = @MaDonThuoc";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                // Tìm đối tượng DonThuoc cần xóa
+                var donThuocToDelete = _context.DonThuocs.FirstOrDefault(d => d.MaDonThuoc == maDonThuoc);
+                if (donThuocToDelete != null)
                 {
-                    command.Parameters.AddWithValue("@MaDonThuoc", maDonThuoc);
-
-                    try
-                    {
-                        connection.Open();
-                        int rowsAffected = command.ExecuteNonQuery();
-                        return rowsAffected > 0;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error: " + ex.Message);
-                        return false;
-                    }
+                    _context.DonThuocs.Remove(donThuocToDelete); 
+                    _context.SaveChanges(); 
+                    return true;
                 }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return false;
             }
         }
 
-        // Tìm kiếm đơn thuốc
-        public List<DonThuoc> TimKiem(string keyword)
+
+        public DonThuoc TimKiem(int maDonThuoc)
         {
-            List<DonThuoc> danhSachDonThuoc = new List<DonThuoc>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                string query = "SELECT MaDonThuoc, MaKhamBenh, NgayKeDon, GhiChu " +
-                               "FROM DonThuoc " +
-                               "WHERE MaDonThuoc LIKE @Keyword OR GhiChu LIKE @Keyword";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
-
-                    try
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                DonThuoc donThuoc = new DonThuoc
-                                {
-                                    MaDonThuoc = reader.GetInt32(0),
-                                    MaKhamBenh = reader.IsDBNull(1) ? (int?)null : reader.GetInt32(1),
-                                    NgayKeDon = reader.GetDateTime(2),
-                                    GhiChu = reader.IsDBNull(3) ? null : reader.GetString(3)
-                                };
-
-                                danhSachDonThuoc.Add(donThuoc);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error: " + ex.Message);
-                    }
-                }
+                return _context.DonThuocs.FirstOrDefault(b => b.MaDonThuoc == maDonThuoc); // Tìm kiếm chính xác theo mã
             }
-
-            return danhSachDonThuoc;
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return null; // Trả về null nếu không tìm thấy hoặc có lỗi
+            }
         }
 
+
+
+
+
+        // Lấy danh sách tất cả đơn thuốc
         public List<DonThuoc> LayDanhSach()
         {
-            List<DonThuoc> danhSachDonThuoc = new List<DonThuoc>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                string query = "SELECT MaDonThuoc, MaKhamBenh, NgayKeDon, GhiChu FROM DonThuoc";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    try
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                DonThuoc donThuoc = new DonThuoc
-                                {
-                                    MaDonThuoc = reader.GetInt32(0),
-                                    MaKhamBenh = reader.IsDBNull(1) ? (int?)null : reader.GetInt32(1),
-                                    NgayKeDon = reader.GetDateTime(2),
-                                    GhiChu = reader.IsDBNull(3) ? null : reader.GetString(3)
-                                };
-
-                                danhSachDonThuoc.Add(donThuoc);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error: " + ex.Message);
-                    }
-                }
+                return _context.DonThuocs.ToList(); // Lấy toàn bộ danh sách từ bảng DonThuoc
             }
-
-            return danhSachDonThuoc;
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return new List<DonThuoc>();
+            }
         }
     }
 }

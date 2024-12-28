@@ -1,109 +1,108 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DTO.Entities;
 
 namespace DAL.DAL
 {
     public class KhoaDAL
     {
-        private string connectionString = "DBContextYT";
+        private readonly DBContext _context;
+
+        public KhoaDAL()
+        {
+            _context = new DBContext();
+        }
 
         // Lấy danh sách tất cả các khoa
         public List<Khoa> LayDanhSach()
         {
-            List<Khoa> danhSachKhoa = new List<Khoa>();
-
-            string query = "SELECT MaKhoa, TenKhoa, MoTa FROM Khoa";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    try
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Khoa khoa = new Khoa
-                                {
-                                    MaKhoa = reader.GetInt32(0),
-                                    TenKhoa = reader.GetString(1),
-                                    MoTa = reader.IsDBNull(2) ? null : reader.GetString(2)
-                                };
-
-                                danhSachKhoa.Add(khoa);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Error: " + ex.Message);
-                    }
-                }
+                return _context.Khoas.ToList(); // Lấy toàn bộ danh sách khoa từ bảng Khoa
             }
-
-            return danhSachKhoa;
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return new List<Khoa>();
+            }
         }
 
         // Thêm khoa
         public bool Them(Khoa khoa)
         {
-            string query = @"
-                INSERT INTO Khoa (MaKhoa, TenKhoa, MoTa)
-                VALUES (@MaKhoa, @TenKhoa, @MoTa)";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MaKhoa", khoa.MaKhoa);
-                command.Parameters.AddWithValue("@TenKhoa", khoa.TenKhoa);
-                command.Parameters.AddWithValue("@MoTa", khoa.MoTa);
-
-                connection.Open();
-                int rowsAffected = command.ExecuteNonQuery();
-                return rowsAffected > 0;
+                _context.Khoas.Add(khoa); 
+                _context.SaveChanges();  
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return false;
             }
         }
 
         // Sửa khoa
         public bool Sua(Khoa khoa)
         {
-            string query = @"
-            UPDATE Khoa
-            SET TenKhoa = @TenKhoa, MoTa = @MoTa
-            WHERE MaKhoa = @MaKhoa";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MaKhoa", khoa.MaKhoa);
-                command.Parameters.AddWithValue("@TenKhoa", khoa.TenKhoa);
-                command.Parameters.AddWithValue("@MoTa", khoa.MoTa);
+                // Tìm đối tượng Khoa cần sửa
+                var khoaToUpdate = _context.Khoas.FirstOrDefault(k => k.MaKhoa == khoa.MaKhoa);
+                if (khoaToUpdate != null)
+                {
+                    khoaToUpdate.TenKhoa = khoa.TenKhoa;
+                    khoaToUpdate.MoTa = khoa.MoTa;
 
-                connection.Open();
-                int rowsAffected = command.ExecuteNonQuery();
-                return rowsAffected > 0;
+                    _context.SaveChanges(); // Lưu thay đổi
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return false;
             }
         }
-
 
         // Xóa khoa
         public bool Xoa(int maKhoa)
         {
-            string query = "DELETE FROM Khoa WHERE MaKhoa = @MaKhoa";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MaKhoa", maKhoa);
+                // Tìm đối tượng Khoa cần xóa
+                var khoaToDelete = _context.Khoas.FirstOrDefault(k => k.MaKhoa == maKhoa);
+                if (khoaToDelete != null)
+                {
+                    _context.Khoas.Remove(khoaToDelete); // Xóa đối tượng Khoa khỏi DbSet
+                    _context.SaveChanges(); // Lưu thay đổi
+                    return true;
+                }
 
-                connection.Open();
-                int rowsAffected = command.ExecuteNonQuery();
-                return rowsAffected > 0;
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return false;
+            }
+        }
+
+        // Tìm kiếm khoa theo mã
+        public Khoa TimKiem(int maKhoa)
+        {
+            try
+            {
+                return _context.Khoas.FirstOrDefault(k => k.MaKhoa == maKhoa); 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return null; 
             }
         }
     }

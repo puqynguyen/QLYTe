@@ -49,6 +49,7 @@
             this.btnBacSi.TabIndex = 3;
             this.btnBacSi.Text = "Quản Lý Bác Sĩ";
             this.btnBacSi.UseVisualStyleBackColor = true;
+            this.btnBacSi.Click += new System.EventHandler(this.btnBacSi_Click);
             // 
             // lblTitle
             // 
@@ -68,6 +69,7 @@
             this.btnKhoa.TabIndex = 4;
             this.btnKhoa.Text = "Quản Lý Khoa";
             this.btnKhoa.UseVisualStyleBackColor = true;
+            this.btnKhoa.Click += new System.EventHandler(this.btnKhoa_Click);
             // 
             // btnLichSuKham
             // 

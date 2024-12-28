@@ -31,7 +31,12 @@ namespace BUS.BUS
 
         public bool XoaKhoa(int maKhoa)
         {
-            return khoaDAL.Xoa(maKhoa);
+            return khoaDAL.Xoa(maKhoa); 
+        }
+
+        public Khoa TimKiemKhoa(int maKhoa)
+        {
+            return khoaDAL.TimKiem(maKhoa);
         }
     }
 }
