@@ -45,12 +45,11 @@
   <ItemGroup>
     <Compile Include="Entities\BacSi.cs" />
     <Compile Include="Entities\BenhNhan.cs" />
-    <Compile Include="Entities\ChiSoYTe.cs" />
     <Compile Include="Entities\ChiTietDonThuoc.cs" />
+    <Compile Include="Entities\DBContext.cs" />
     <Compile Include="Entities\DonThuoc.cs" />
     <Compile Include="Entities\KhamBenh.cs" />
     <Compile Include="Entities\Khoa.cs" />
-    <Compile Include="Entities\DBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

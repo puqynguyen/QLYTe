@@ -57,6 +57,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtGioiTinh = new System.Windows.Forms.TextBox();
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.btnChon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -306,9 +307,21 @@
             this.dtpNgaySinh.Size = new System.Drawing.Size(200, 22);
             this.dtpNgaySinh.TabIndex = 28;
             // 
+            // btnChon
+            // 
+            this.btnChon.Location = new System.Drawing.Point(228, 258);
+            this.btnChon.Name = "btnChon";
+            this.btnChon.Size = new System.Drawing.Size(75, 23);
+            this.btnChon.TabIndex = 29;
+            this.btnChon.Text = "Chọn";
+            this.btnChon.UseVisualStyleBackColor = true;
+            this.btnChon.Visible = false;
+            this.btnChon.Click += new System.EventHandler(this.btnChon_Click);
+            // 
             // FrmBenhNhan
             // 
             this.ClientSize = new System.Drawing.Size(982, 453);
+            this.Controls.Add(this.btnChon);
             this.Controls.Add(this.dtpNgaySinh);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtGioiTinh);
@@ -371,5 +384,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtGioiTinh;
         private System.Windows.Forms.DateTimePicker dtpNgaySinh;
+        private System.Windows.Forms.Button btnChon;
     }
 }

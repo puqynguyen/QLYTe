@@ -55,6 +55,7 @@ namespace GUI
                 txtNgayKham.Text = x.NgayKham.ToString();
                 txtTrieuChung.Text = x.TrieuChung;
                 txtChuanDoan.Text = x.ChanDoan.ToString();
+                txtGhiChu.Text = x.GhiChu.ToString();
             }
         }
 
@@ -80,6 +81,11 @@ namespace GUI
             Fill(result);
         }
 
-
+        private void txtDonThuoc_Click(object sender, EventArgs e)
+        {
+            int maX = Convert.ToInt32(txtMaKhamBenh.Text);
+            FrmDonThuoc frmDonThuoc = new FrmDonThuoc(maX);
+            frmDonThuoc.ShowDialog();
+        }
     }
 }

@@ -35,15 +35,34 @@ namespace DAL.DAL
                 using (var db = new DBContext())
                 {
                     return db.KhamBenhs
-                     .Include("BacSi.Khoa") // Include related Khoa through BacSi
-                     .Include("BenhNhan") // Include related BenhNhan
-                     .FirstOrDefault(k => k.MaKhamBenh == maKhamBenh);
+                             .Include("BacSi.Khoa") // Include related Khoa through BacSi
+                             .Include("BenhNhan") // Include related BenhNhan
+                             .FirstOrDefault(k => k.MaKhamBenh == maKhamBenh);
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
                 return null;
+            }
+        }
+
+        // Method to add a new KhamBenh
+        public int ThemKhamBenh(KhamBenh khamBenh)
+        {
+            try
+            {
+                using (var db = new DBContext())
+                {
+                    db.KhamBenhs.Add(khamBenh);
+                    db.SaveChanges();
+                    return khamBenh.MaKhamBenh; // Return the ID of the newly created KhamBenh
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return -1; // Return -1 to indicate an error
             }
         }
     }

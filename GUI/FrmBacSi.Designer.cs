@@ -43,6 +43,7 @@
             this.txtMaBacSi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbb = new System.Windows.Forms.ComboBox();
+            this.btnChon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -208,9 +209,21 @@
             this.cbb.Size = new System.Drawing.Size(200, 24);
             this.cbb.TabIndex = 18;
             // 
+            // btnChon
+            // 
+            this.btnChon.Location = new System.Drawing.Point(330, 266);
+            this.btnChon.Name = "btnChon";
+            this.btnChon.Size = new System.Drawing.Size(75, 23);
+            this.btnChon.TabIndex = 19;
+            this.btnChon.Text = "Chọn";
+            this.btnChon.UseVisualStyleBackColor = true;
+            this.btnChon.Visible = false;
+            this.btnChon.Click += new System.EventHandler(this.btnChon_Click);
+            // 
             // FrmBacSi
             // 
             this.ClientSize = new System.Drawing.Size(982, 453);
+            this.Controls.Add(this.btnChon);
             this.Controls.Add(this.cbb);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -255,5 +268,6 @@
         private System.Windows.Forms.TextBox txtMaBacSi;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbb;
+        private System.Windows.Forms.Button btnChon;
     }
 }

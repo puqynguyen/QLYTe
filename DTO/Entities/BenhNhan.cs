@@ -12,7 +12,6 @@ namespace DTO.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BenhNhan()
         {
-            ChiSoYTes = new HashSet<ChiSoYTe>();
             KhamBenhs = new HashSet<KhamBenh>();
         }
 
@@ -40,9 +39,6 @@ namespace DTO.Entities
 
         [Column(TypeName = "date")]
         public DateTime? NgayDangKy { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiSoYTe> ChiSoYTes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhamBenh> KhamBenhs { get; set; }

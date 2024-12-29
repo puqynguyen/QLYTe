@@ -15,20 +15,21 @@ namespace DAL.DAL
         }
 
         // Thêm đơn thuốc
-        public bool Them(DonThuoc donThuoc)
+        public int Them(DonThuoc donThuoc)
         {
             try
             {
-                _context.DonThuocs.Add(donThuoc); 
-                _context.SaveChanges();          
-                return true;
+                _context.DonThuocs.Add(donThuoc);
+                _context.SaveChanges();
+                return donThuoc.MaDonThuoc;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
-                return false;
+                return -1;
             }
         }
+
 
         // Sửa đơn thuốc
         public bool Sua(DonThuoc donThuoc)
@@ -41,7 +42,6 @@ namespace DAL.DAL
                 {
                     donThuocToUpdate.MaKhamBenh = donThuoc.MaKhamBenh;
                     donThuocToUpdate.NgayKeDon = donThuoc.NgayKeDon;
-                    donThuocToUpdate.GhiChu = donThuoc.GhiChu;
 
                     _context.SaveChanges(); // Lưu thay đổi
                     return true;

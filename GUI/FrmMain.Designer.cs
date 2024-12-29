@@ -31,6 +31,7 @@
             this.btnDonThuoc.TabIndex = 1;
             this.btnDonThuoc.Text = "Khám Bệnh";
             this.btnDonThuoc.UseVisualStyleBackColor = true;
+            this.btnDonThuoc.Click += new System.EventHandler(this.btnDonThuoc_Click);
             // 
             // btnBenhNhan
             // 

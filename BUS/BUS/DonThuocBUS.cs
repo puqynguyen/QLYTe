@@ -15,7 +15,7 @@ namespace BUS.BUS
         }
 
         // Thêm đơn thuốc
-        public bool ThemDonThuoc(DonThuoc donThuoc)
+        public int ThemDonThuoc(DonThuoc donThuoc)
         {
             return donThuocDAL.Them(donThuoc);
         }

@@ -15,11 +15,22 @@ namespace GUI
 {
     public partial class FrmBenhNhan : Form
     {
+        public delegate void SelectBenhNhanHandler(int maBenhNhan);
+        public event SelectBenhNhanHandler OnSelectBenhNhan;
         BenhNhanBUS BUS = new BenhNhanBUS();
         public FrmBenhNhan()
         {
             InitializeComponent();
             Fill(BUS.LayDanhSachBenhNhan());
+        }
+        public FrmBenhNhan(bool kham = true)
+        {
+            InitializeComponent();
+            Fill(BUS.LayDanhSachBenhNhan());
+            btnThem.Visible = false;
+            btnSua.Visible = false;
+            btnXoa.Visible = false;
+            btnChon.Visible = true;
         }
         private void Fill(List<BenhNhan> list)
         {
@@ -121,6 +132,20 @@ namespace GUI
             int maX = Convert.ToInt32(txtMaBenhNhan.Text);
             FrmLichSuKham frmLichSuKham = new FrmLichSuKham(maX);
             frmLichSuKham.ShowDialog();
+        }
+
+        private void btnChon_Click(object sender, EventArgs e)
+        {
+            if (txtMaBenhNhan.Text != "")
+            {
+                int maBenhNhan = Convert.ToInt32(txtMaBenhNhan.Text);
+                OnSelectBenhNhan?.Invoke(maBenhNhan);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một bệnh nhân!");
+            }
         }
     }
 }

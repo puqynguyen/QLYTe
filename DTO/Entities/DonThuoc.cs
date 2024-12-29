@@ -18,13 +18,10 @@ namespace DTO.Entities
         [Key]
         public int MaDonThuoc { get; set; }
 
-        public int? MaKhamBenh { get; set; }
+        public int MaKhamBenh { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime NgayKeDon { get; set; }
-
-        [StringLength(200)]
-        public string GhiChu { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonThuoc> ChiTietDonThuocs { get; set; }

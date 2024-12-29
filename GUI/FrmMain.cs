@@ -40,5 +40,11 @@ namespace GUI
             FrmLichSuKham frm = new FrmLichSuKham();
             frm.ShowDialog();
         }
+
+        private void btnDonThuoc_Click(object sender, EventArgs e)
+        {
+            FrmKhamBenh frmKhamBenh = new FrmKhamBenh();
+            frmKhamBenh.ShowDialog();
+        }
     }
 }

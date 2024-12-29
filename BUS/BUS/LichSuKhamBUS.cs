@@ -57,5 +57,19 @@ namespace BUS.BUS
                 return null;
             }
         }
+
+        // Method to add a new KhamBenh
+        public int ThemKhamBenh(KhamBenh khamBenh)
+        {
+            try
+            {
+                return _lichSuKhamDAL.ThemKhamBenh(khamBenh);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return -1; // Return -1 to indicate an error
+            }
+        }
     }
 }

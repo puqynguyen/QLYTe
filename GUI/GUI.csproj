@@ -60,6 +60,12 @@
     <Compile Include="FrmBenhNhan.Designer.cs">
       <DependentUpon>FrmBenhNhan.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDonThuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDonThuoc.Designer.cs">
+      <DependentUpon>FrmDonThuoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmKhamBenh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBenhNhan.resx">
       <DependentUpon>FrmBenhNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDonThuoc.resx">
+      <DependentUpon>FrmDonThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKhamBenh.resx">
+      <DependentUpon>FrmKhamBenh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmKhoa.resx">
       <DependentUpon>FrmKhoa.cs</DependentUpon>

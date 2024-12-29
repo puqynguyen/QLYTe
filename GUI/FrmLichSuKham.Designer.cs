@@ -55,6 +55,9 @@
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtGhiChu = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -150,7 +153,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(437, 342);
+            this.label5.Location = new System.Drawing.Point(438, 312);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 16);
             this.label5.TabIndex = 7;
@@ -267,7 +270,7 @@
             // txtChuanDoan
             // 
             this.txtChuanDoan.AutoSize = true;
-            this.txtChuanDoan.Location = new System.Drawing.Point(525, 342);
+            this.txtChuanDoan.Location = new System.Drawing.Point(526, 312);
             this.txtChuanDoan.Name = "txtChuanDoan";
             this.txtChuanDoan.Size = new System.Drawing.Size(16, 16);
             this.txtChuanDoan.TabIndex = 19;
@@ -301,11 +304,44 @@
             this.label2.TabIndex = 23;
             this.label2.Text = "*Nhập mã hoặc tên bệnh nhân";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Blue;
+            this.label10.Location = new System.Drawing.Point(763, 419);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(209, 29);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Xem đơn thuốc >>";
+            this.label10.Click += new System.EventHandler(this.txtDonThuoc_Click);
+            // 
+            // txtGhiChu
+            // 
+            this.txtGhiChu.AutoSize = true;
+            this.txtGhiChu.Location = new System.Drawing.Point(525, 372);
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(16, 16);
+            this.txtGhiChu.TabIndex = 26;
+            this.txtGhiChu.Text = "...";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(437, 372);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(51, 16);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "Ghi chú";
+            // 
             // FrmLichSuKham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 453);
+            this.Controls.Add(this.txtGhiChu);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtTimKiem);
@@ -365,5 +401,8 @@
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label txtGhiChu;
+        private System.Windows.Forms.Label label12;
     }
 }

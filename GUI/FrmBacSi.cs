@@ -15,9 +15,19 @@ namespace GUI
     public partial class FrmBacSi : Form
     {
         BacSiBUS bacSiBUS = new BacSiBUS();
+        public delegate void SelectBacSiHandler(int maBacSi);
+        public event SelectBacSiHandler OnSelectBacSi;
         public FrmBacSi()
         {
             InitializeComponent();
+        }
+        public FrmBacSi(bool mode = true)
+        {
+            InitializeComponent();
+            btnChon.Visible = true;
+            btnSua.Visible = false;
+            btnThem.Visible = false;
+            btnXoa.Visible = false;
         }
 
         private void FrmBacSi_Load(object sender, EventArgs e)
@@ -111,6 +121,20 @@ namespace GUI
             int maBS = Convert.ToInt32(txtMaBacSi.Text);
             bacSiBUS.XoaBacSi(maBS);
             Fill(bacSiBUS.LayDanhSachBacSi());
+        }
+
+        private void btnChon_Click(object sender, EventArgs e)
+        {
+            if (txtMaBacSi.Text != "")
+            {
+                int maBacSi = Convert.ToInt32(txtMaBacSi.Text);
+                OnSelectBacSi?.Invoke(maBacSi);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một bác sĩ!");
+            }
         }
     }
 }

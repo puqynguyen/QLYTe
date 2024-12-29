@@ -8,13 +8,12 @@ namespace DTO.Entities
     public partial class DBContext : DbContext
     {
         public DBContext()
-            : base("name=DbContext")
+            : base("name=DBContext")
         {
         }
 
         public virtual DbSet<BacSi> BacSis { get; set; }
         public virtual DbSet<BenhNhan> BenhNhans { get; set; }
-        public virtual DbSet<ChiSoYTe> ChiSoYTes { get; set; }
         public virtual DbSet<ChiTietDonThuoc> ChiTietDonThuocs { get; set; }
         public virtual DbSet<DonThuoc> DonThuocs { get; set; }
         public virtual DbSet<KhamBenh> KhamBenhs { get; set; }
@@ -33,11 +32,6 @@ namespace DTO.Entities
             modelBuilder.Entity<BenhNhan>()
                 .Property(e => e.CMND_CCCD)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<KhamBenh>()
-                .HasMany(e => e.DonThuocs)
-                .WithOptional(e => e.KhamBenh)
-                .WillCascadeOnDelete();
         }
     }
 }
