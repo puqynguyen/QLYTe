@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS.BUS;
 using DTO.Entities;
@@ -93,6 +86,8 @@ namespace GUI
             x.GioiTinh = txtGioiTinh.Text;
             x.NgayDangKy = DateTime.Now;
             x.NgaySinh = dtpNgaySinh.Value;
+            x.SoDienThoai = txtSoDienThoai.Text;
+            BUS.ThemBenhNhan(x);
             ClearAllTextBoxes();
             Fill(BUS.LayDanhSachBenhNhan());
         }
@@ -121,10 +116,15 @@ namespace GUI
 
         private void txtMaBenhNhan_TextChanged(object sender, EventArgs e)
         {
-            lblLichSuKham.Visible = true;
-            int maX = Convert.ToInt32(txtMaBenhNhan.Text);
-            BenhNhan x = BUS.TimKiemBenhNhan(maX);
-            lblLichSuKham.Text = "Xem lịch sử khám của:" + x.HoTen;
+            if(txtMaBenhNhan.Text != "")
+            {
+                lblLichSuKham.Visible = true;
+                int maX = Convert.ToInt32(txtMaBenhNhan.Text);
+                BenhNhan x = BUS.TimKiemBenhNhan(maX);
+                lblLichSuKham.Text = "Xem lịch sử khám của:" + x.HoTen;
+            }
+            else
+                lblLichSuKham.Visible=false;
         }
 
         private void lblLichSuKham_Click(object sender, EventArgs e)
